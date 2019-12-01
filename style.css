@@ -1,3 +1,6 @@
+html, body{
+	overflow-x: hidden;
+}
 body{
 	font-family: 'Montserrat', sans-serif;
 	font-weight: 400;
@@ -15,6 +18,8 @@ p{
 }
 .advantages{
 	padding-top: 50px;
+	position: relative;
+	z-index: 2;
 }
 .img-wrapper{
 	position: relative;
@@ -219,6 +224,7 @@ p{
 	margin-left: 15px;
 }
 .contact{
+	overflow-x: unset!important;
 	background: url('assets/Podlozhka.jpg') no-repeat;
 	-webkit-background-size: cover;
 	     -o-background-size: cover;
@@ -548,6 +554,7 @@ footer hr{
 .Header{
 	position: relative;
 	margin-top: 35px;
+	opacity: 0;
 }
 .bgWrap{
 	position: absolute;
@@ -563,20 +570,29 @@ footer hr{
 	background: url("assets/bg.jpg") no-repeat;
 	background-size: cover;
 }
-.subLogo{
+.mask{
+	background: #FFFFFF;
 	position: absolute;
-	top: 120px;
-	left: 12%;
-	color: #ffffff;
-	font-size: 30px;
-	font-weight: 700;
-	line-height: 36px;
-	text-transform: uppercase;
-	z-index: 9;
+	left: 0;
+	top: 0;
+	width: 100%;
+	height: 100%;
+	z-index: 2;
+}
+.rectangle-mask{
+	background: #FFFFFF;
+	position: absolute;
+	/*z-index: 3;*/
+	opacity: .6;
+	height: 150px;
+	top: -35px;
+	left: 10%;
+	width: 30%;
+	z-index: 1;
 }
 .rectangle{
 	position: absolute;
-	height: 250px;
+	height: 150px;
 	top: -35px;
 	left: 10%;
 	background-color: #e29451;
@@ -585,6 +601,136 @@ footer hr{
 }
 .footerSocials{
 	padding: 0;
+}
+header{
+	background-color: #e29451;
+	margin-bottom: 30px;
+}
+.menu .menuWrap{
+	background-color: #434343;
+}
+.menuContactList{
+	list-style-type: none;
+	display: flex;
+	padding-left: 0;
+	margin-bottom: 0;
+}
+.menuContactList-item{
+	padding: 0 5px;
+}
+.menuContactList-item:first-child{
+	padding-left: 0;
+}
+.menuContactList-btn{
+	background-color: #e29451;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 5px 10px;
+	margin-left: 15px;
+}
+header a, header p{
+	color: #ffffff;
+	font-size: 14px;
+	font-weight: 500;
+}
+.menuHours, .menuEmail, .menuPhone, .menuContact{
+	display: flex;
+	align-items: center;
+	height: 100%;
+	padding: 5px 0;
+	justify-content: center;
+}
+.menuHours p{
+	white-space: pre;
+}
+.menuHours img, .menuEmail img, .menuPhone img{
+	margin-right: 10px;
+}
+.navHeader{
+	width: 100%;
+	text-align: right;
+	height: 50px;
+}
+.navigation{
+	position: relative;
+}
+.navigation .navMenu{
+	position: absolute;
+	z-index: 99;
+	background-color: #434343;
+	opacity: 0.9;
+	right: 0;
+	transition: all 0.5s;
+	top: -70px;
+	width: 40%;
+	padding-left: 50px;
+	padding-top: 100px;
+	padding-bottom: 150px;
+	height: calc(100vh + 70px);
+	max-height: calc(100vh + 70px);
+}
+.navigation.hidden .navMenu{
+	right: -40%;
+}
+.navigation.hidden .burgerBtn-open{
+	opacity: 1;
+}
+.navigation.hidden .burgerBtn-close{
+	opacity: 0;
+}
+.navigation .burgerBtn-open{
+	opacity: 0.3;
+	transition: all 0.3s;
+	position: absolute;
+	right: 0;
+	top: 15px;
+}
+.navigation .burgerBtn-close{
+	opacity: 1;
+	transition: all 0.3s;
+	position: absolute;
+	right: 15px;
+	top: 17px;
+}
+.navMenuList{
+	padding-left: 0;
+	list-style-type: none;
+}
+.navMenuList-item{
+	margin-bottom: 20px;
+}
+.navMenuList-item a{
+	background-color: #e29451;
+	color: #fff;
+	text-transform: uppercase;
+	padding: 5px 10px;
+}
+.burgerBtn{
+	position: relative;
+	z-index: 999;
+}
+nav hr{
+	height: 2px;
+	background-color: #ffffff;
+	margin: 25px 0;
+}
+.navMenuContacts-tel{
+	color: #ffffff;
+	font-size: 16px;
+	font-weight: 700;
+}
+.navMenuContacts-address{
+	color: #ffffff;
+	font-size: 15px;
+	font-weight: 400;
+	margin-top: 20px;
+}
+.suggestion-wrapper{
+	margin-top: 100px;
+}
+.activity{
+	position: relative;
+	z-index: 2;
 }
 @media(max-width: 992px){
 	.bgWrap{
@@ -625,6 +771,18 @@ footer hr{
 	.address{
 		margin-top: 30px;
 	}
+	.menuHours, .menuEmail, .menuPhone, .menuContact{
+		justify-content: flex-start;
+		padding-left: 15px;
+	}
+	.navigation .navMenu{
+		top: -100px;
+		width: 50%;
+		padding-top: 160px;
+	}
+	.navigation.hidden .navMenu{
+		right: -50%;
+	}
 }
 @media (max-width: 768px){
 	.subLogo{
@@ -663,7 +821,6 @@ footer hr{
 	.phoneList{
 		margin-top: 30px;
 	}
-
 }
 @media(max-width: 575px){
 	.footerLogo p{
@@ -690,6 +847,14 @@ footer hr{
 		padding: 0;
 		margin-top: 20px;
 	}
+	.navigation .navMenu{
+		top: -160px;
+		width: 70%;
+		padding-top: 160px;
+	}
+	.navigation.hidden .navMenu{
+		right: -70%;
+	}
 
 }
 @media(max-width: 530px){
@@ -710,5 +875,11 @@ footer hr{
 @media(max-width: 430px){
 	.phoneList li, .address{
 		font-size: 12px;
+	}
+	.navigation .navMenu{
+		width: 95%;
+	}
+	.navigation.hidden .navMenu{
+		right: -95%;
 	}
 }
